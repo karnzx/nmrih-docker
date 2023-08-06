@@ -5,10 +5,10 @@
 # server options
 # https://steamcommunity.com/app/224260/discussions/0/2595630410178365636/
 
-set -x
-
 # install/update
-${STEAMCMDDIR}/steamcmd.sh +runscript ${UPDATE_SCRIPT}
+if [ ! -n "$(ls -A ${STEAMAPPDIR} 2>/dev/null)" ]; then
+	${STEAMCMDDIR}/steamcmd.sh +runscript ${UPDATE_SCRIPT}
+fi
 
 echo "Server Hostname: $SV_HOSTNAME"
 
