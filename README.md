@@ -1,10 +1,19 @@
 # nmrih-docker
 
-no more room in hell dedicated server in docker 
+[no more room in hell](https://store.steampowered.com/app/224260/No_More_Room_in_Hell/) dedicated server in docker 
 
-used to Create dedicated server to play with friends
+I use this to create a private, dedicated server for playing with friends, allowing us to relive the cherished memories of our childhood.
 
 ## Usage
+
+Start server with default server config or edit [server config](#config) instead.
+
+```shell
+docker run -d -i -t --name nmrih-server \
+	-e SV_HOSTNAME="server-name" \
+	-e SV_PASSWORD="1234" \
+	nmrih
+```
 
 ### Manual build
 
@@ -15,7 +24,7 @@ git clone https://github.com/karnzx/nmrih-docker.git
 docker build -t nmrih .
 ```
 
-run with minimum port `20175/udp`
+run with minimum port `20175/udp`, you can expose `27015` and `27020` too if you want.
 
 ```shell
 docker run -d -i -t --name nmrih-server \
@@ -36,7 +45,7 @@ Delete by run (force remove nmrih-server container)
 docker rm -f nmrih-server
 ```
 
-If use persistence volume be sure that directory owner is user id 1000
+**If use persistence volume be sure that directory user owner id is 1000**
 
 ## Console
 
