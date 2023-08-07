@@ -46,6 +46,7 @@ docker rm -f nmrih-server
 ```
 
 **If use persistence volume be sure that directory user owner id is 1000**
+`-v ./nmrih:/home/steam/nmrih/ `
 
 ## Console
 
