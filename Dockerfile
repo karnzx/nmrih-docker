@@ -1,6 +1,7 @@
 FROM cm2network/steamcmd:root AS build_stage
 
-LABEL contributor="karnzx"
+LABEL org.opencontainers.image.source https://github.com/karnzx/nmrih-server
+LABEL org.opencontainers.image.description="no more room in hell dedicated server in docker"
 
 # info: https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
 ENV STEAMAPPID 317670
