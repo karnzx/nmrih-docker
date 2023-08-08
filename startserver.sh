@@ -2,5 +2,6 @@
 
 docker run -d -i -t --name nmrih-server \
 	-p 27015:27015/udp \
+	-v ./nmrih:/home/steam/nmrih/ \
 	--restart=unless-stopped \
-	nmrih
+	ghcr.io/karnzx/nmrih-server
