@@ -10,27 +10,31 @@ Start server with default server config or edit [server config](#config) instead
 
 ```shell
 docker run -d -i -t --name nmrih-server \
+        -p 27015:27015/udp \
 	-e SV_HOSTNAME="server-name" \
 	-e SV_PASSWORD="1234" \
-	nmrih
+	ghcr.io/karnzx/nmrih-docker:latest
 ```
 
-### Manual build
-
-clone and build 
-
-```shell
-git clone https://github.com/karnzx/nmrih-docker.git
-docker build -t nmrih .
-```
-
-run with minimum port `20175/udp`, you can expose `27015` and `27020` too if you want.
+Should be run with minimum port `20175/udp` or you can expose `27015` and `27020/udp` too if you want.
 
 ```shell
 docker run -d -i -t --name nmrih-server \
 	-p 27015:27015/udp \
+        -p 27015:27015 \
+        -p 27020:27020/udp \
 	--restart=unless-stopped \
-	nmrih
+	ghcr.io/karnzx/nmrih-docker:latest
+```
+
+**If use persistence volume be sure that directory user owner id is 1000**, severfiles stored at `/home/steam/nmrih/`
+
+```shell
+docker run -d -i -t --name nmrih-server \
+        -p 27015:27015/udp \
+        -v ./nmrih:/home/steam/nmrih/ \
+        --restart=unless-stopped \
+        ghcr.io/karnzx/nmrih-docker:latest
 ```
 
 Restart by run 
@@ -44,9 +48,6 @@ Delete by run (force remove nmrih-server container)
 ```shell
 docker rm -f nmrih-server
 ```
-
-**If use persistence volume be sure that directory user owner id is 1000**
-`-v ./nmrih:/home/steam/nmrih/ `
 
 ## Console
 
